@@ -1,63 +1,63 @@
-# LARAVEL 12 RESTFUL API JWT AUTH SCRAMBLE-OPENAPI 
+# LARAVEL 12 RESTFUL API JWT AUTH SCRAMBLE-OPENAPI
 
-Bu proje, Laravel 12 tabanlı bir RESTful API starter kitidir. JWT tabanlı kimlik doğrulama ve otomatik API dokümantasyonu için Scramble kullanır. 
+This project is a Laravel 12-based RESTful API starter kit. It uses JWT-based authentication and Scramble for automatic API documentation.
 
-**Starter kit olarak; request, resource, validation, controller, model gibi katmanların tamamı eksiksiz şekilde yapılandırılmıştır.** Böylece geliştiriciler, modern ve güvenli bir RESTful API geliştirmeye hızlıca başlayabilirler.
+**As a starter kit, it comes with a complete structure including request, resource, validation, controller, and model layers.** This allows developers to quickly start building a modern and secure RESTful API.
 
-## Kullanılan Teknolojiler ve Araçlar
+## Technologies and Tools Used
 
-- **Laravel 12**: Modern PHP web uygulamaları için popüler framework.
-- **JWT Auth (`tymon/jwt-auth`)**: JSON Web Token ile API kimlik doğrulama.
-- **Scramble (`dedoc/scramble`)**: Otomatik OpenAPI (Swagger) dokümantasyonu.
-- **Sanctum**: (Kurulu, ancak JWT Auth ana kimlik doğrulama olarak kullanılıyor.)
-- **Pest**: Testler için modern PHP test framework'ü.
+- **Laravel 12**: A popular framework for modern PHP web applications.
+- **JWT Auth (`tymon/jwt-auth`)**: API authentication using JSON Web Tokens.
+- **Scramble (`dedoc/scramble`)**: Automatic OpenAPI (Swagger) documentation.
+- **Sanctum**: (Installed, but JWT Auth is used as the main authentication method.)
+- **Pest**: A modern PHP testing framework.
 
-## Kurulum
+## Installation
 
-1. **Projeyi klonlayın:**
+1. **Clone the project:**
    ```bash
    git clone <repo-url>
    cd laravel-jwt-openapi-starter
    ```
 
-2. **Bağımlılıkları yükleyin:**
+2. **Install dependencies:**
    ```bash
    composer install
    npm install && npm run build
    ```
 
-3. **.env dosyasını oluşturun ve yapılandırın:**
+3. **Create and configure the .env file:**
    ```bash
    cp .env.example .env
    php artisan key:generate
    ```
 
-4. **JWT Secret oluşturun:**
+4. **Generate JWT Secret:**
    ```bash
    php artisan jwt:secret
    ```
 
-5. **Veritabanı ayarlarını yapın ve migrate edin:**
+5. **Set up your database and run migrations:**
    ```bash
    php artisan migrate
    ```
 
-6. **Geliştirme sunucusunu başlatın:**
+6. **Start the development server:**
    ```bash
    php artisan serve
    ```
 
-## Kimlik Doğrulama (JWT)
+## Authentication (JWT)
 
-- **Kayıt:** `POST /api/register`
-- **Giriş:** `POST /api/login`
-- **Kullanıcı Bilgisi:** `GET /api/user` (JWT ile korumalı)
-- **Token Yenileme:** `POST /api/refresh` (JWT ile korumalı)
-- **Çıkış:** `POST /api/logout` (JWT ile korumalı)
+- **Register:** `POST /api/register`
+- **Login:** `POST /api/login`
+- **User Info:** `GET /api/user` (Protected by JWT)
+- **Token Refresh:** `POST /api/refresh` (Protected by JWT)
+- **Logout:** `POST /api/logout` (Protected by JWT)
 
-Tüm korumalı endpoint'lere erişmek için `Authorization: Bearer <token>` header'ı gereklidir.
+All protected endpoints require the `Authorization: Bearer <token>` header.
 
-### Örnek Giriş Yanıtı
+### Example Login Response
 
 ```json
 {
@@ -68,12 +68,12 @@ Tüm korumalı endpoint'lere erişmek için `Authorization: Bearer <token>` head
 }
 ```
 
-## Scramble ile API Dokümantasyonu
+## API Documentation with Scramble
 
-- Otomatik olarak `/docs/api` adresinde OpenAPI (Swagger) dokümantasyonu sunar.
-- JWT ile korumalı endpoint'ler için Bearer Auth desteği otomatik olarak eklenmiştir.
+- Automatically provides OpenAPI (Swagger) documentation at `/docs/api`.
+- Bearer Auth support is automatically added for JWT-protected endpoints.
 
-### Scramble Konfigürasyonu
+### Scramble Configuration
 
 `app/Providers/ScrambleProvider.php`:
 ```php
@@ -87,20 +87,7 @@ public function boot(): void
         });
 }
 ```
-
-## Testler
-
-```bash
-php artisan test
-# veya
-vendor/bin/pest
-```
-
-## Katkı ve Lisans
-
-MIT Lisansı ile lisanslanmıştır. Katkılarınızı bekleriz!
-
 ---
 
-**Not:**  
-- API endpoint'leri ve örnek istekler için `/docs/api` adresindeki dokümantasyonu inceleyebilirsiniz.
+**Note:**  
+- For API endpoints and sample requests, please refer to the documentation at `/docs/api`.
